@@ -1,10 +1,11 @@
-import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "@/components/ui/Theme-Btn";
 import { SearchIcon } from "lucide-react";
 import Link from "next/link";
+import HamMenu from "./HamMenu";
+import AuthBtn from "@/app/(main)/_components/Auth-Btn";
 
-export function Navbar() {
+export function     Navbar() {
     const links = [
         { href: "/course", label: "Courses" },
         { href: "/about", label: "About" },
@@ -12,8 +13,9 @@ export function Navbar() {
     ];
 
     return <nav className="sticky top-0 w-full flex py-4 px-6 border-b-1 border-border items-center text-card-foreground z-50 justify-between">
-        <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold mr-8">
+        <div className="flex items-center ">
+            <HamMenu/>
+            <Link href="/" className="text-2xl font-bold mr-8 space-x-2">
                 Gurukul
             </Link>
             <ul className="hidden space-x-4 md:flex">
@@ -31,18 +33,7 @@ export function Navbar() {
                 <SearchIcon className="w-5 h-5 text-muted-foreground md:hidden" />
                 <Input className=" hidden md:block" placeholder="Search Courses" />
             </div>
-            <ul className="flex space-x-4">
-                <li className={buttonVariants({ variant: "default" })}>
-                    <Link href='/login' className="text-lg">
-                        Login
-                    </Link>
-                </li>
-                <li className={`${buttonVariants({ variant: "secondary" })}`} >
-                    <Link href='/signup' className="text-lg ">
-                        Sign Up
-                    </Link>
-                </li>
-            </ul>
+            <AuthBtn/>
             <ThemeToggle />
         </div>
     </nav>
